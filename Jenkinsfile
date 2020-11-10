@@ -1,12 +1,14 @@
-pipeline{
+pipeline {
     agent { label 'UBUNTU' }
     triggers { pollSCM('* * * * *') }
-    stages{
+    stages {
         stage('clone and compile')
-        steps{
+        {
+        steps {
             git branch: 'declarative'
             url: 'https://github.com/lordsrikrishna/game-of-life.git'
             sh 'mvn compile'
+              }
         }
-    }
+           }
 }
